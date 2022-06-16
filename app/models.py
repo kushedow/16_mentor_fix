@@ -31,12 +31,12 @@ class Offer(db.Model):
     order_id = db.Column(db.Integer, db.ForeignKey('orders.id'))
     executor_id = db.Column(db.Integer, db.ForeignKey('users.id'))
 
-    executor = relationship('User')
-    order = relationship('Order')
+    executor = relationship('User', foreign_keys=executor_id)
+    order = relationship('Order', foreign_keys=order_id)
 
 
 class Order(db.Model):
-    __tablename__ = 'offers'
+    __tablename__ = 'orders'
 
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(255))
